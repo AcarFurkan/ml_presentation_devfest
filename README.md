@@ -1,6 +1,7 @@
 # ml_presentation_devfest
 
-A new Flutter project.
+Control a presentation application that we made with Flutter using a phone camera
+
 
 ## Getting Started
 
