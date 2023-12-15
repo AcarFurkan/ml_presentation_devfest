@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
 import 'package:ml_presentation_devfest/feature/mobile/presentation_control_page/viewmodel/cubit/presentation_cubit.dart';
 
 import '../../presentation_control_page/view/control_page.dart';
@@ -16,10 +17,10 @@ class OnBoardPage extends StatelessWidget {
           body: Center(
             child: ControlPage(
               customPaint: context.read<PresentationCubit>().customPaint,
-              onImage: (inputImage) async {
+              onImage: (InputImage inputImage) async {
                 context.read<PresentationCubit>().processImage(inputImage);
               },
-              title: 'tt',
+              title: 'Flutter DevFest',
             ),
           ),
         );

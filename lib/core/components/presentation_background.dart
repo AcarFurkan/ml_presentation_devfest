@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ml_presentation_devfest/core/draw_dots/draw_cubit.dart';
 import 'package:ml_presentation_devfest/core/draw_dots/draw_painter.dart';
-import 'package:ml_presentation_devfest/feature/desktop/presentation_page/view/presentation_page.dart';
 
 class PresentationBackground extends StatelessWidget {
   const PresentationBackground({super.key, required this.child});

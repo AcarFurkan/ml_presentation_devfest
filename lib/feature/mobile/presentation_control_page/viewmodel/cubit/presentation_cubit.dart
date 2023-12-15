@@ -40,11 +40,6 @@ class PresentationCubit extends Cubit<PresentationState> {
     this.context = context;
   }
 
-  void processImageCompute(InputImage inputImage) async {
-    compute(processImage, inputImage);
-    emit(PresentationInitial());
-  }
-
   int pos = 90;
 
   Future<void> processImage(InputImage inputImage) async {
@@ -73,7 +68,6 @@ class PresentationCubit extends Cubit<PresentationState> {
 
         return;
       }
-      print(headx);
 
       double rightTreshold = leftHip != 0 ? leftHip : 100;
       double leftTreshold =
@@ -92,21 +86,12 @@ class PresentationCubit extends Cubit<PresentationState> {
       if (x > rightTreshold && passedRightTHPrevious) {
         passedLeftThForPrevious = true;
       }
-      print("--------0");
-      print(x);
-      print("left hip: $leftHip ");
-      print("right hip: $rightHip ");
-
-      //print(eyeLocationY);
-      //print(rightWristsY);
-      print("--------1");
 
       if (passedLeftThForPrevious && passedRightTHPrevious && isEyeLocationY) {
         passedLeftTHForNext = false;
         passedRightTHForNext = false;
         passedLeftThForPrevious = false;
         passedRightTHPrevious = false;
-        log("NEXT " * 500);
 
         users.doc('test').set({'value': "next", 'position': x});
         emit(PresentationChangePage());
@@ -117,12 +102,10 @@ class PresentationCubit extends Cubit<PresentationState> {
         passedLeftTHForNext = false;
         passedLeftThForPrevious = false;
         passedRightTHPrevious = false;
-        log("BACK " * 500);
         users.doc('test').set({'value': "back", 'position': x});
         emit(PresentationChangePage());
       }
     } else {
-      //text = 'Poses found: ${poses.length}\n\n';
       // TODO: set _customPaint to draw landmarks on top of image
       customPaint = null;
     }

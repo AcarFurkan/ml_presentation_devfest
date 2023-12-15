@@ -1,15 +1,10 @@
-import 'dart:math';
-import 'dart:ui';
+// ignore_for_file: curly_braces_in_flow_control_structures, prefer_typing_uninitialized_variables
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ml_presentation_devfest/core/components/presentation_background.dart';
 import 'package:ml_presentation_devfest/core/components/presentation_content.dart';
-import 'package:ml_presentation_devfest/core/draw_dots/draw_cubit.dart';
-import 'package:ml_presentation_devfest/core/draw_dots/draw_painter.dart';
 import 'package:video_player/video_player.dart';
 
 const colorizeColors = [
@@ -18,6 +13,8 @@ const colorizeColors = [
   Colors.yellow,
   Colors.red,
 ];
+
+enum PassKey { next, previous }
 
 const titleTextStyle = TextStyle(
   fontSize: 70.0,
@@ -76,20 +73,16 @@ class _PresentationPageState extends State<PresentationPage> {
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-            if (snapshot.hasError) {
+            if (snapshot.hasError)
               return const Text('Something went wrong');
-            }
-
-            if (snapshot.connectionState == ConnectionState.waiting) {
+            else if (snapshot.connectionState == ConnectionState.waiting)
               return const Text("Loading");
-            }
+
             Map<String, dynamic> data =
                 snapshot.data?.data() as Map<String, dynamic>? ?? {};
-            print(data);
-            data["value"];
             if (isOpen) {
               if (data.isNotEmpty) {
-                if (data["value"] == "next") {
+                if (data["value"] == PassKey.next.name) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     controller.nextPage(
                         duration: const Duration(milliseconds: 500),
@@ -261,7 +254,7 @@ class _PresentationPageState extends State<PresentationPage> {
                       );
                     }
                     if (index == 8) {
-                      return   PresentationBackground(
+                      return PresentationBackground(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -272,7 +265,9 @@ class _PresentationPageState extends State<PresentationPage> {
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            const SizedBox(height: 100,),
+                            const SizedBox(
+                              height: 100,
+                            ),
                             const Text(
                               "@furkanacardev",
                               style: titleTextStyle,
@@ -282,9 +277,6 @@ class _PresentationPageState extends State<PresentationPage> {
                         ),
                       );
                     }
-                    //
-                    //
-                    //Sunumu değiştirmek için bir şeye dokunmamız gerekiyor mu?
 
                     return Container(
                       color: Colors.green,
