@@ -1,17 +1,8 @@
-# ml_presentation_devfest
+# control a presentation application that we made with Flutter using a phone camera and ML Kit (Pose Detection)
 
-Control a presentation application that we made with Flutter using a phone camera
+These are old codes and they are not clean, I am sharing them to give an example in my article. Please don't judge me for the codes. But if you read the article you can understand :)
 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+https://github.com/AcarFurkan/ml_presentation_devfest/assets/65075121/6ad46f31-07ee-4901-8a1e-39e2ba221f71
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
